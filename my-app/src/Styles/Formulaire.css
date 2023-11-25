@@ -1,0 +1,22 @@
+.conteneur {
+    margin: 100px auto;
+    
+    
+
+
+  }
+  
+form {
+    padding: 100px 0px;
+    background-color: #f9f9fb;
+    max-width: 1000px; /* Ajustez la largeur du formulaire selon vos besoins */
+    width: 100%;
+    text-align: center; /* Alignement du texte à gauche dans le formulaire */
+  }
+
+input{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+}

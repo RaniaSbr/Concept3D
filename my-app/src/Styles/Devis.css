@@ -1,0 +1,37 @@
+.devis {
+  background-image: linear-gradient(
+    to right,
+    #0f3057 0%,
+    #008891 51%,
+    #04587a 100%
+  );
+  border: none;
+  padding: 15px 25px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 15px #eee;
+  border-radius: 23px;
+  display: block;
+  font-weight: 600;
+  font-size: 17px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 8px 8px 10px rgb(0, 0, 0, 0.12);
+}
+
+.devis:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: #0f3057;
+  transform: translateX(-10px);
+}
+@media only screen and (max-width: 1024px) {
+  .devis {
+    font-size: 13px;
+    padding: 8px 20px;
+  }
+}

@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.navbar {
+  position: fixed;
+  height: 80px;
+  top: 0;
+}
+.app-container {
+  display: flex;
+}
+
+.navbar {
+  flex: 1; /* La Navbar prendra la moitié de l'espace disponible */
+}
+
+.content-container {
+  flex: 1; /* Le contenu (Acceuil et Cube) prendra la moitié de l'espace disponible */
+  display: flex;
+  flex-direction: column; /* Les composants à l'intérieur seront empilés verticalement */
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.nv {
+  position: absolute;
+  top: 0;
+}
+.cc {
+  position: relative;
+  top: 600px;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
