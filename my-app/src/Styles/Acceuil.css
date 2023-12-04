@@ -19,7 +19,7 @@
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(300px, auto);
   row-gap: 50px;
-  margin: 150px 50px 50px 50px;
+  margin: 120px 50px 50px 50px;
 }
 .acceuil-right {
   width: 50vw;

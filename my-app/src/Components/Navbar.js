@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "../Styles/main.css"; // Importe main.css depuis le bon chemin
+import "../Styles/main.css";
 
 function Navbar(params) {
   const navRef = useRef();
@@ -13,13 +13,13 @@ function Navbar(params) {
     <div>
       <p>cc</p>
       <header className="navbar active">
-        <div className="logo">
-          <img className="logoC" src=".\Assets\Fichier 14.png" alt="" />
+        <a href="/" className="logo">
+          <img className="logoC" src=".\Assets\Logo.png" alt="" />
           <div className="oncept3d">
             <p>oncept</p>
             <p className="d3">3D</p>
           </div>
-        </div>
+        </a>
 
         <nav className="nav-right" ref={navRef}>
           {" "}

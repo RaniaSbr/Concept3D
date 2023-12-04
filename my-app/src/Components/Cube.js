@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/cube.css"; // Importe main.css depuis le bon chemin
+import "../Styles/cube.css";
 
 function Cube() {
   return (
