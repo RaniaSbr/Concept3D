@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Styles/main.css";
 import { NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 function Navbar() {
   const navRef = useRef();
+  const navigate = useNavigate();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -38,12 +39,16 @@ function Navbar() {
               <NavLink to="/FAQ">FAQ</NavLink>
             </li>
           </ul>
-          <button className="devis-btn">{"Obtenir un devis "}</button>
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
-          </button>
+          <NavLink to="/Devis" className="devis-btn">
+            {"Obtenir un devis "}
+          </NavLink>{" "}
         </nav>
-        <button className="nav-btn" onClick={showNavbar}>
+        <button
+          className="nav-btn"
+          onClick={() => {
+            navigate("/Devis");
+          }}
+        >
           <FaBars />
         </button>
       </header>
