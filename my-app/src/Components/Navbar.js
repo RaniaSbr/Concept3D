@@ -1,10 +1,11 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Styles/main.css";
+import { NavLink } from "react-router-dom";
 
-function Navbar(params) {
+function Navbar() {
   const navRef = useRef();
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
@@ -12,7 +13,7 @@ function Navbar(params) {
   return (
     <div>
       <p>cc</p>
-      <header className="navbar active">
+      <header className="navbar activee">
         <a href="/" className="logo">
           <img className="logoC" src=".\Assets\Logo.png" alt="" />
           <div className="oncept3d">
@@ -22,21 +23,19 @@ function Navbar(params) {
         </a>
 
         <nav className="nav-right" ref={navRef}>
-          {" "}
           <ul className="nav-right-a">
             <li> </li>
             <li>
-              <a href="/#">Services</a>
+              <NavLink to="/services">Services</NavLink>
             </li>
             <li>
-              <a href="/#">Materiaux</a>
+              <NavLink to="/Catalogue">Materiaux</NavLink>
             </li>
             <li>
-              <a href="/#">Contact</a>
+              <NavLink to="/Contact">Contact</NavLink>
             </li>
             <li>
-              {" "}
-              <a href="/#">FAQ</a>
+              <NavLink to="/FAQ">FAQ</NavLink>
             </li>
           </ul>
           <button className="devis-btn">{"Obtenir un devis "}</button>

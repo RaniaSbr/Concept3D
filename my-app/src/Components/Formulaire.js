@@ -73,7 +73,7 @@ function Devis() {
 
   return (
     <div className="conteneur">
-      <img src="./Assets/Wave2 - Copie.png" alt="" className="background" />
+      <img src="./Assets/Wave2.png" alt="" className="background" />
       {/* <p className="p1"> Obtenir un devis</p> */}
       <p className="p2">
         Remplissez le formulaire ci-dessous avec les détails de votre projet

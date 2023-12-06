@@ -1,4 +1,9 @@
 .dev {
-  margin-top: 100px;
+  margin-top: 140px;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 1024px) {
+  .dev {
+    margin-top: 0px;
+  }
 }

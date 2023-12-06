@@ -20,7 +20,14 @@ a {
   text-decoration: none;
   color: black;
 }
-
+.active {
+  color: var(--secondaryColor);
+}
+.activee::after {
+  background-color: red;
+  height: 20px;
+  width: 20px;
+}
 .logo {
   display: flex;
   align-items: center;
