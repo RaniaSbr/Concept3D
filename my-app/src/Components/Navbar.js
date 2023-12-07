@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import "../Styles/main.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +7,7 @@ function Navbar() {
   const navRef = useRef();
   const navigate = useNavigate();
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
+  
 
   return (
     <div>

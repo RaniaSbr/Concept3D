@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../Styles/Formulaire.css";
+import Model from "../Components/model";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
+import icone from '../icone/papier.png'
 
 function Devis() {
   const [Nom, setNom] = useState("");
@@ -12,6 +14,11 @@ function Devis() {
   const [Fichier, setFichier] = useState(null);
   const [Materiel, setMateriel] = useState("");
   const [Msg, setMsg] = useState("PAS DE MENTION");
+  const [Modal , setModal]=useState(false);
+
+  function modelOn(){
+    setModal(!Modal) /* Pour l'affichage du pop-up*/
+  }
 
   const handleNomChange = (e) => {
     setNom(e.target.value);
@@ -24,7 +31,13 @@ function Devis() {
   };
 
   const handlePhoneChange = (e) => {
-    setPhone(e.target.value);
+    const inputValue = e.target.value;
+    if (/^[+]?[123]*( )?[0-9]*$/.test(inputValue)) { /* verifier si cela contient que des chiffers */
+      setPhone(inputValue);
+    }else{
+      alert("SAISIE ERONEE");
+      setPhone("+213 ");
+    }
   };
 
   const handleMsgChange = (e) => {
@@ -51,6 +64,7 @@ function Devis() {
     formData.append("Msg", Msg);
 
     try {
+      console.log("je suis la");
       // Make a POST request using Axios
       const response = await axios.post(
         "http://localhost:5000/mail",
@@ -61,14 +75,16 @@ function Devis() {
           },
         }
       );
-
+      
       // Handle the response as needed
       console.log("Server Response:", response.data);
+      modelOn();
+      console.log(Modal);
     } catch (error) {
       // Handle errors
-      console.error("Error:", error);
+      /*console.error("Error:", error);*/
     }
-    console.log(formData);
+  
   };
 
   return (
@@ -76,12 +92,13 @@ function Devis() {
       <img src="./Assets/Wave2.png" alt="" className="background" />
       {/* <p className="p1"> Obtenir un devis</p> */}
       <p className="p2">
+        <br></br>
         Remplissez le formulaire ci-dessous avec les détails de votre projet
         pour recevoir un devis personnalisé.
       </p>
       <form className="formulaire" onSubmit={handleSubmit}>
         <div className="nom">
-          <label htmlFor="nom" id>
+          <label htmlFor="nom" >
             Nom :
           </label>
           <input
@@ -124,12 +141,17 @@ function Devis() {
 
         <div className="tel">
           <label htmlFor="email">Telephone :</label>
-          <input
-            type="phone"
+          <input 
+            type="tel" 
             id="phone"
-            name="phone"
+            name="phone" 
+            inputMode="numeric"
+            maxLength={14}
+            minLength={14} 
+            required 
             value={Phone}
             onChange={handlePhoneChange}
+           
           />
         </div>
 
@@ -143,15 +165,29 @@ function Devis() {
               />
               Choisir un fichier
             </span>
+            </label><br></br>
             <input
               className=""
               type="file"
               id="fichier"
               name="fichier"
+              accept=".stl, .STL, .obj, .OBJ, .amf, .AMF, .3mf, .3MF, .pdf, .PDF, .jpeg, .JPEG, .jpg, .JPG, .3DS, .3ds, .SLDPRT, .sldprt, .SCAD, .scad, .BLEND, .blend, .GCODE, .gcode, .SKP, .skp, .FBX, .fbx, .RAR, .rar, .DWG, .dwg, .MTL, .mtl, .BMP, .bmp, .PNG, .png, .GIF, .gif, .pdf, .PDF"              
               onChange={handleFichierChange}
-              accept=".3DM (Rhino), .3DS (3D Studio), .3MF, .AC3D, .ASE (3D Studio), .CATPART, .CATPRODUCT, .CGR (CATIA), .COB (TrueSpace), .DAE (Collada), .DXF / .DXF4 (AutoCAD), .IAM / .IPT (Autodesk Inventor), .JT, .IGES / .IGS, .KMZ (Google Earth), .LWO (LightWave), .MD2 / MD3 (Quake), .OFF, .PDF, .PLY (Stanford), .PRC, .PRT, .Q3O (Quick3D), .RAR, .SAT, .SCAD (OpenSCAD), .SKP (Sketchup), .SLDPRT, .SLDASM (SolidWorks), .STEP (ISO 10303), .TGZ, .U3D, .VRML, .X_T (Parasolid), .ZIP"
+              required
             />
-          </label>
+            {Fichier && (
+        <div>
+          <br></br>
+          <img 
+           width={60}
+           height={60}
+            src={icone} 
+            alt="Icône du fichier"
+          />
+          <p>{Fichier.name}</p>
+        </div>
+      )}
+          
         </div>
         <div className="liste">
           {" "}
@@ -160,6 +196,7 @@ function Devis() {
             name="Materiel"
             onChange={handleMaterielChange}
             value={Materiel}
+            required
           >
             <option value="PLA">PLA</option>
             <option value="PRO1">PRO1</option>
@@ -210,6 +247,7 @@ function Devis() {
           </button>
         </div>
       </form>
+      { Modal && <Model></Model>} 
     </div>
   );
 }
