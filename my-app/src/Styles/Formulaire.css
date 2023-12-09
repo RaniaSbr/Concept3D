@@ -20,6 +20,10 @@
   position: relative;
   height: 1000px;
 }
+.contact-form {
+  background-color: rgba(97, 103, 122, 0.2) !important;
+  margin-top: 0 !important;
+}
 .background {
   position: fixed;
   z-index: 0;
@@ -45,6 +49,7 @@
   width: 700px;
   font-weight: 400;
   margin-bottom: 50px;
+  margin-top: 0px;
   text-align: center;
 }
 label,
@@ -257,7 +262,7 @@ select::after {
   }
 }
 
-.icone{
+.icone {
   padding: 100px 10px 10px 10px;
   width: 60px;
   height: 100px;

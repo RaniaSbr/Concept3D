@@ -1,0 +1,11 @@
+.contact-p {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 100px;
+}
+.contact-content {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 100vw;
+}

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import icone from "../icone/papier.png";
 
-function Devis() {
+function Contact_form() {
   const [Nom, setNom] = useState("");
   const [Prenom, setPrenom] = useState("");
   const [Mail, setMail] = useState("");
@@ -60,8 +60,7 @@ function Devis() {
     formData.append("Prenom", Prenom);
     formData.append("Mail", Mail);
     formData.append("Phone", Phone);
-    formData.append("Fichier", Fichier);
-    formData.append("Materiel", Materiel);
+
     formData.append("Msg", Msg);
 
     try {
@@ -88,14 +87,12 @@ function Devis() {
   };
 
   return (
-    <div className="conteneur">
-      <img src="./Assets/Wave2.png" alt="" className="background" />
+    <div className="conteneur contact">
       <p className="p2">
         <br></br>
-        Remplissez le formulaire ci-dessous avec les détails de votre projet
-        pour recevoir un devis personnalisé.
+        Remplissez le formulaire ci-dessous pour nous contacter.
       </p>
-      <form className="formulaire" onSubmit={handleSubmit}>
+      <form className="formulaire contact-form" onSubmit={handleSubmit}>
         <div className="nom">
           <label htmlFor="nom">Nom :</label>
           <input
@@ -151,76 +148,6 @@ function Devis() {
           />
         </div>
 
-        <div className="fichier">
-          <label htmlFor="fichier">
-            <p className="charger-maquette">CHARGEZ UNE MAQUETTE :</p>
-            <span className="fichier-span">
-              <FontAwesomeIcon
-                icon={faCloudUploadAlt}
-                className="upload-icon"
-              />
-              Choisir un fichier
-            </span>
-          </label>
-          <br></br>
-          <input
-            className=""
-            type="file"
-            id="fichier"
-            name="fichier"
-            accept=".stl, .STL, .obj, .OBJ, .amf, .AMF, .3mf, .3MF, .pdf, .PDF, .jpeg, .JPEG, .jpg, .JPG, .3DS, .3ds, .SLDPRT, .sldprt, .SCAD, .scad, .BLEND, .blend, .GCODE, .gcode, .SKP, .skp, .FBX, .fbx, .RAR, .rar, .DWG, .dwg, .MTL, .mtl, .BMP, .bmp, .PNG, .png, .GIF, .gif, .pdf, .PDF"
-            onChange={handleFichierChange}
-            required
-          />
-          {Fichier && (
-            <div>
-              <br></br>
-              <img width={60} height={60} src={icone} alt="Icône du fichier" />
-              <p>{Fichier.name}</p>
-            </div>
-          )}
-        </div>
-        <div className="liste">
-          {" "}
-          <label htmlFor="Materiel">Materiel:</label>
-          <select
-            name="Materiel"
-            onChange={handleMaterielChange}
-            value={Materiel}
-            required
-          >
-            <option value="PLA">PLA</option>
-            <option value="PRO1">PRO1</option>
-            <option value="PLA N">PLA N</option>
-            <option value="PETG">PETG</option>
-            <option value="NYLON">NYLON</option>
-            <option value="FLEXFIL">FLEXFIL</option>
-            <option value="FLEX 45">FLEX 45</option>
-            <option value="FLEX 60">FLEX 60</option>
-            <option value="PVA +">PVA +</option>
-            <option value="HIPS">HIPS</option>
-            <option value="FILAMENT CHARGE BOIS">FILAMENT CHARGE BOIS</option>
-            <option value="FILAMENT CHARGE LIEGE">FILAMENT CHARGE LIEGE</option>
-            <option value="FILAMENT CHARGE CUIVRE">
-              FILAMENT CHARGE CUIVRE
-            </option>
-            <option value="FILAMENT CHARGE BRONZE">
-              FILAMENT CHARGE BRONZE
-            </option>
-            <option value="FILAMENT CHARGE EN CARBONNE">
-              FILAMENT CHARGE EN CARBONNE
-            </option>
-            <option value="FILAMENT ARAMIDE KEVLAR">
-              FILAMENT ARAMIDE KEVLAR
-            </option>
-            <option value="FILAMENT FIBRE DE VERRE 15%">
-              FILAMENT FIBRE DE VERRE 15%
-            </option>
-            <option value="FILAMENT FIBRE DE VERRE 30%">
-              FILAMENT FIBRE DE VERRE 30%
-            </option>
-          </select>
-        </div>
         <div className="msg">
           {" "}
           <label htmlFor="message">Message :</label>
@@ -242,4 +169,4 @@ function Devis() {
     </div>
   );
 }
-export default Devis;
+export default Contact_form;
