@@ -7,8 +7,6 @@ function Navbar() {
   const navRef = useRef();
   const navigate = useNavigate();
 
-  
-
   return (
     <div>
       <p>cc</p>
@@ -16,8 +14,10 @@ function Navbar() {
         <a href="/" className="logo">
           <img className="logoC" src=".\Assets\Logo.png" alt="" />
           <div className="oncept3d">
-            <p>oncept</p>
-            <p className="d3">3D</p>
+            <p className="oncept">oncept</p>
+            <a href="/">
+              <p className="d3">3D</p>
+            </a>
           </div>
         </a>
 
@@ -25,7 +25,10 @@ function Navbar() {
           <ul className="nav-right-a">
             <li> </li>
             <li>
-              <NavLink to="/services">Services</NavLink>
+              <div className="ff">
+                {" "}
+                <NavLink to="/services">Services</NavLink>
+              </div>
             </li>
             <li>
               <NavLink to="/Catalogue">Materiaux</NavLink>

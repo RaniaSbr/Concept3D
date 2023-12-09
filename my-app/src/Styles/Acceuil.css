@@ -58,21 +58,6 @@
     grid-template-columns: repeat(2, 1fr);
     position: relative;
   }
-  /* .acceeil-left {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .acceuil-right {
-    margin: 0px;
-    grid-column: 1/3;
-    grid-row: 2;
-  }
-  .btns {
-    grid-column: 2/3;
-    grid-row: 2;
-  }
-   */
-
   .transf {
     font-size: 30px;
     width: 100vw;
