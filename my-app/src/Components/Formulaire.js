@@ -5,6 +5,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import icone from "../icone/papier.png";
+import Chargement from "./loading.js";
 
 function Devis() {
   const [Nom, setNom] = useState("");
@@ -15,8 +16,13 @@ function Devis() {
   const [Materiel, setMateriel] = useState("");
   const [Msg, setMsg] = useState("PAS DE MENTION");
   const [Modal, setModal] = useState(false);
+  const [Loading, setLoading] = useState(false);
 
+  function loadingOn(){
+    setLoading(true);
+  }
   function modelOn() {
+    setLoading(false);/*Pour La page loading*/
     setModal(!Modal); /* Pour l'affichage du pop-up*/
   }
 
@@ -63,7 +69,7 @@ function Devis() {
     formData.append("Fichier", Fichier);
     formData.append("Materiel", Materiel);
     formData.append("Msg", Msg);
-
+    loadingOn();
     try {
       console.log("je suis la");
       // Make a POST request using Axios
@@ -238,7 +244,9 @@ function Devis() {
           </button>
         </div>
       </form>
+      {Loading && <Chargement></Chargement>}
       {Modal && <Model></Model>}
+      
     </div>
   );
 }

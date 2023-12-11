@@ -46,8 +46,8 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
     contentType: file.mimetype,
   }));
   const mailer = {
-    from: "mohamedamine.tifoun2003@gmail.com",
-    to: "lr_sisaber@esi.dz",
+    from: "mohamedamine.tifoun2003@gCmail.com",
+    to: "mohamedamine.tifoun2003@gCmail.com",
     subject: "Avis de devis",
     text: msg,
     attachments: attachments,
