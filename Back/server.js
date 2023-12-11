@@ -47,7 +47,7 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
   }));
   const mailer = {
     from: "mohamedamine.tifoun2003@gmail.com",
-    to: "mohamedamine.tifoun2003@gmail.com",
+    to: "lr_sisaber@esi.dz",
     subject: "Avis de devis",
     text: msg,
     attachments: attachments,
