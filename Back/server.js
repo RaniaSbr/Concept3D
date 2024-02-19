@@ -29,7 +29,7 @@ const EXP = nodemailer.createTransport({
   secure: true,
   auth: {
     user: "mohamedamine.tifoun2003@gmail.com",
-    pass: "yytewkohzcyrasrq",
+    pass: "npxxdsfdqemqwskn",
   },
 });
 
@@ -46,8 +46,8 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
     contentType: file.mimetype,
   }));
   const mailer = {
-    from: "mohamedamine.tifoun2003@gCmail.com",
-    to: "mohamedamine.tifoun2003@gCmail.com",
+    from: "mohamedamine.tifoun2003@gmail.com",
+    to: "mohamedamine.tifoun2003@gmail.com",
     subject: "Avis de devis",
     text: msg,
     attachments: attachments,
@@ -56,7 +56,9 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
   /* Envoie du Mail */
   EXP.sendMail(mailer, (error, infos) => {
     if (error) {
-      return res.status(500).send(error.toString());
+      console.log(error.toString());
+      return res.status(500);
+     
     }
     res.status(200).send("Mail envoyé à : " + mailer.to);
     alert(" DEVIS ENVOYE ")
