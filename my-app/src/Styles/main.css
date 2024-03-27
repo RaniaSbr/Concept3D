@@ -60,7 +60,8 @@ a {
   height: 80px;
 }
 
-.devis-btn {
+.devis-btn,
+.dev-btn {
   background-image: linear-gradient(
     to right,
     #0f3057 0%,
@@ -84,7 +85,8 @@ a {
   box-shadow: 8px 8px 10px rgb(0, 0, 0, 0.12);
 }
 
-.devis-btn:hover {
+.devis-btn:hover,
+.dev-btn:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
@@ -184,6 +186,12 @@ header .nav-btn {
     top: 2rem;
     right: 2rem;
   }
+  .dev-btn {
+    padding: 10px 14px;
+  }
+  .devis-btn {
+    visibility: hidden;
+  }
   .nav-right-a {
     font-size: 1.5;
     display: grid;
@@ -191,9 +199,7 @@ header .nav-btn {
     margin: 0;
     padding: 0%;
   }
-  .devis-btn {
-    visibility: hidden;
-  }
+
   .logoC {
     height: 30px;
   }

@@ -18,11 +18,11 @@ function Devis() {
   const [Modal, setModal] = useState(false);
   const [Loading, setLoading] = useState(false);
 
-  function loadingOn(){
+  function loadingOn() {
     setLoading(true);
   }
   function modelOn() {
-    setLoading(false);/*Pour La page loading*/
+    setLoading(false); /*Pour La page loading*/
     setModal(!Modal); /* Pour l'affichage du pop-up*/
   }
 
@@ -95,13 +95,17 @@ function Devis() {
 
   return (
     <div className="conteneur">
-      <img src="./Assets/Wave2.png" alt="" className="background" />
+      <img
+        src="./Assets/Wave2.png"
+        alt=""
+        className="fixed mt-[140px] top-0 z-0"
+      />
       <p className="p2">
         <br></br>
         Remplissez le formulaire ci-dessous avec les détails de votre projet
         pour recevoir un devis personnalisé.
       </p>
-      <form className="formulaire" onSubmit={handleSubmit}>
+      <form className="formulaire " onSubmit={handleSubmit}>
         <div className="nom">
           <label htmlFor="nom">Nom :</label>
           <input
@@ -159,8 +163,8 @@ function Devis() {
 
         <div className="fichier">
           <label htmlFor="fichier">
-            <p className="charger-maquette">CHARGEZ UNE MAQUETTE :</p>
-            <span className="fichier-span">
+            <p className="charger-maquette mb-3">CHARGEZ UNE MAQUETTE :</p>
+            <span className="fichier-span bg-bleu/80">
               <FontAwesomeIcon
                 icon={faCloudUploadAlt}
                 className="upload-icon"
@@ -194,8 +198,9 @@ function Devis() {
             onChange={handleMaterielChange}
             value={Materiel}
             required
+            className="py-2 px-5"
           >
-            <option value="PLA">PLA</option>
+            <option value="PLA" className="text-center"></option>
             <option value="PRO1">PRO1</option>
             <option value="PLA N">PLA N</option>
             <option value="PETG">PETG</option>
@@ -227,26 +232,31 @@ function Devis() {
             </option>
           </select>
         </div>
-        <div className="msg">
-          {" "}
-          <label htmlFor="message">Message :</label>
-          <textarea
-            id="message"
-            name="Msg"
-            value={Msg}
-            onChange={handleMsgChange}
-            rows="4"
-          />
-        </div>
-        <div className="bouton">
-          <button type="submit" className="send">
-            Envoyer
-          </button>
+        <div className="grid gap-14 mb-8">
+          <div className="grid ">
+            {" "}
+            <label htmlFor="">Message :</label>
+            <textarea
+              id="message"
+              name="Msg"
+              value={Msg}
+              onChange={handleMsgChange}
+              rows="4"
+              className="bg-white  h-30  shadow-[inset_0_0px_6px_rgba(0,0,0,0.1)] rounded-3xl py-2 px-3 mb-5 "
+            />
+          </div>
+          <div className="bouton">
+            <button
+              type="submit"
+              className="px-20 py-2 font-regular  hover:text-[15.5px] hover:py-2.5 hover:shadow-xl duration-100 text-[15px] ease-in absolute text-white font-bold    rounded-3xl bg-bleu/80"
+            >
+              Envoyer
+            </button>
+          </div>
         </div>
       </form>
       {Loading && <Chargement></Chargement>}
       {Modal && <Model></Model>}
-      
     </div>
   );
 }

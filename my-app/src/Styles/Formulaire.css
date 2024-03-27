@@ -1,7 +1,7 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --navy: #0f3057;
   --bleu: #04587a;
@@ -18,7 +18,7 @@
   justify-content: center;
   font-family: "Poppins", sans-serif;
   position: relative;
-  height: 1000px;
+  margin-top: 0 !important;
 }
 .contact-form {
   background-color: rgba(97, 103, 122, 0.2) !important;
@@ -36,12 +36,13 @@
   position: relative;
   z-index: 2;
   color: black;
+  gap: 5px;
   border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   margin-bottom: 100px;
   width: 600px;
-  padding: 20px 40px 20px 40px;
+  padding: 20px 20px;
 }
 
 .p2 {
@@ -72,9 +73,9 @@ input:focus {
   background-color: transparent;
 }
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px transparent inset; /* Adjust the box-shadow to your preference */
+  -webkit-box-shadow: 0 0 0 30px transparent inset;
   box-shadow: 0 0 0 30px transparent inset;
-  -webkit-text-fill-color: inherit !important; /* Ensure text color remains the same */
+  -webkit-text-fill-color: inherit !important;
 }
 
 select {
@@ -154,7 +155,6 @@ input[type="file"] {
 }
 .fichier-span {
   padding: 8px 12px;
-  background: var(--bleu);
   color: #fff;
   cursor: pointer;
   border-radius: 20px;
@@ -178,7 +178,6 @@ input[type="file"] {
   box-shadow: 0 0 15px #eee;
   border-radius: 23px;
   display: block;
-  /* font-weight: 600; */
   font-size: 15px;
   position: relative;
   cursor: pointer;
@@ -227,7 +226,7 @@ select::after {
 }
 @media only screen and (max-width: 1024px) {
   .formulaire {
-    padding: 0px;
+    padding-bottom: 50px;
   }
   label,
   .charger-maquette {
@@ -253,10 +252,7 @@ select::after {
   .formulaire {
     width: 400px;
   }
-  .send {
-    padding: 10px 50px;
-    margin-bottom: 20px;
-  }
+
   .p2 {
     display: none;
   }
