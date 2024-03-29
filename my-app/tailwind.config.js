@@ -11,6 +11,9 @@ module.exports = {
         rose: "#f39189",
         gris: "#61677a",
       },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
       boxShadow: {
         "inset-bottom": "inset 0 -2px 4px rgba(0, 0, 0, 0.6)",
       },

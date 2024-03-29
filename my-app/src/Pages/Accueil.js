@@ -12,7 +12,9 @@ function App() {
         {" "}
         <Acceuil></Acceuil>
       </div>
-      <Products></Products>
+      <div className="mb-80">
+        <Products></Products>
+      </div>
       <Footer></Footer>
     </div>
   );
