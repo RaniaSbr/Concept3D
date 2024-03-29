@@ -12,20 +12,9 @@ function Footer(params) {
   };
   const handlePhoneClick = () => {
     const phoneNumber = "+123556442362";
-
     const telLink = `tel:${phoneNumber}`;
-
     window.open(telLink, "_blank");
   };
-  //  const handleMapClick = () => {
-  //    const location = "1600 Amphitheatre Parkway, Mountain View, CA";
-
-  //    const encodedLocation = encodeURIComponent(location);
-
-  //    const mapLink = `https://www.google.com/maps?q=${encodedLocation}`;
-
-  //    window.open(mapLink, "_blank");
-  //  };
 
   return (
     <div className="footer">
