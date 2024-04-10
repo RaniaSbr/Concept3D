@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const nodemailer = require("nodemailer");
 const multer = require("multer");
+const path = require("path");
+const hb= require("nodemailer-express-handlebars");
 app.use(express.json());
 
 
@@ -32,7 +34,18 @@ const EXP = nodemailer.createTransport({
     pass: "npxxdsfdqemqwskn",
   },
 });
+/****** TEMPLATE CONFIG */
+const config = {
+  viewEngine:{
+    extName:".handlebars",
+    partialsDir: path.resolve("./../my-app/src/Styles"),
+    defaultLayout: false ,
+  }, 
+  viewPath: path.resolve("./../my-app/src/Styles"),
+  extName:".handlebars",
+}
 
+EXP.use('compile' , hb(config));
 /* ENVOIE DU MAIL */
 
 app.post("/mail", upload.array("Fichier"), (req, res) => {
@@ -49,14 +62,23 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
     from: "mohamedamine.tifoun2003@gmail.com",
     to: "mohamedamine.tifoun2003@gmail.com",
     subject: "Avis de devis",
-    text: msg,
+    template:'email',
+    contexte:{
+      Titre:"Avis de Devis",
+      Nom:`${req.body.Nome}`,
+      Prenom:`${req.body.Prenom}`,
+      EMAIL : `${req.body.Mail}`,
+      TELEPHONE:`${req.body.Phone}`,
+      Materiel:`${req.body.Materiel}`,
+      Mention:`${req.body.Msg}`
+    },
     attachments: attachments,
   };
-
+  console.log("depart de lenvoie");
   /* Envoie du Mail */
   EXP.sendMail(mailer, (error, infos) => {
     if (error) {
-      console.log(error.toString());
+      console.log(error);
       return res.status(500);
      
     }

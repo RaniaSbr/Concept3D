@@ -4,7 +4,7 @@ import Model from "../Components/model";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
-import icone from "../icone/papier.png";
+import icone from "./../../public/Assets/papier.png";
 import Chargement from "./loading.js";
 
 function Devis() {
