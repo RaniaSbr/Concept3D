@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            
+        }
+
+        .container {
+            align-items: center;
+            border: 2px solid #032f70;
+            padding: 20px;
+            width: fit-content;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            border-radius: 10px;
+            align-items: center;
+        }
+
+        .container p {
+            margin: 5px 0;
+        }
+
+        .spn {
+            text-decoration: underline;
+            color: #032f70;
+            font-family: Fantasy;
+            margin-right: 15px;
+        }
+
+        img{
+            width: auto;
+            height: 50px;
+            margin: 10px 10px 30px 100px;
+        }
+
+        .margin{
+            margin-left: 120px;
+            color:#032f70;
+            text-decoration: underline;
+             
+            
+        }
+        .field{
+            font-weight: bold;
+        }
+        
+        .txtCont{
+            border: 1px solid #032f70;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .date {
+            font-size: smaller; /* Smaller font size */
+            text-align: center; /* Center text */
+            opacity: 0.7; /* Reduced opacity for less prominence */
+            }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="date">{{Date}}-{{Heure}}</p>
+        <h3 class="margin">{{Titre}}</h3>
+        <img src="cid:logo">
+        <p><span class="spn">Nom :    </span> <span class="field">{{Nom}}</span> </p>
+        <p><span class="spn">Prenom :    </span> <span class="field">{{Prenom}}</span> </p>
+        <p><span class="spn">Email :   </span> <span class="field">{{EMAIL}}</span> </p>
+        <p><span class="spn">Telephone :   </span><span class="field">{{TELEPHONE}}</span></p>
+        <p><span class="spn">Materiel :   </span> <span class="field">{{Materiel}}</span> </p>
+        <div class="msg">
+            <p><span class="spn">Mentions :</span> </p>
+            <div class="txtCont">
+            <p> <span class="field">{{Mention}}</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

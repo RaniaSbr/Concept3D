@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 const multer = require("multer");
 const path = require("path");
 const hb= require("nodemailer-express-handlebars");
+const { Stats } = require("fs");
 app.use(express.json());
 
 
@@ -36,45 +37,58 @@ const EXP = nodemailer.createTransport({
 });
 /****** TEMPLATE CONFIG */
 const config = {
-  viewEngine:{
-    extName:".handlebars",
-    partialsDir: path.resolve("./../my-app/src/Styles"),
-    defaultLayout: false ,
-  }, 
-  viewPath: path.resolve("./../my-app/src/Styles"),
-  extName:".handlebars",
-}
+  viewEngine: {
+    extName: ".handlebars",
+    partialsDir: path.resolve(__dirname, "./public/views"),
+    defaultLayout: false,
+  },
+  viewPath: path.resolve(__dirname, "./public/views"),
+  extName: ".handlebars",
+};
+
 
 EXP.use('compile' , hb(config));
 /* ENVOIE DU MAIL */
 
 app.post("/mail", upload.array("Fichier"), (req, res) => {
   console.log("SENDING");
-  const msg = `Nom: ${req.body.Nome} \nPrénom: ${req.body.Prenom} \nAdresse mail: ${req.body.Mail} \nTelephone: ${req.body.Phone}\n Materiel: ${req.body.Materiel} \nMessage: ${req.body.Msg}`;
   const Files = req.files;
-  const attachments = Files.map((file) => ({
+  console.log(req.body);
+  const fileAttachments = Files.map((file) => ({
     filename: file.originalname,
     content: file.buffer,
     encoding: "base64",
+    cid: `file`,
     contentType: file.mimetype,
   }));
   const mailer = {
     from: "mohamedamine.tifoun2003@gmail.com",
-    to: "mohamedamine.tifoun2003@gmail.com",
+    to: "lm_sisaber@esi.dz",
     subject: "Avis de devis",
-    template:'email',
-    contexte:{
+    template:'index',
+    context:{
       Titre:"Avis de Devis",
-      Nom:`${req.body.Nome}`,
-      Prenom:`${req.body.Prenom}`,
+      Date:new Date().toLocaleDateString(),
+      Heure : new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'}),
+      Nom:`${req.body.Nom.toUpperCase()}`,
+      Prenom:`${req.body.Prenom.toUpperCase()}`,
       EMAIL : `${req.body.Mail}`,
       TELEPHONE:`${req.body.Phone}`,
       Materiel:`${req.body.Materiel}`,
-      Mention:`${req.body.Msg}`
+      Mention:`${req.body.Msg}`,
+      attachments: fileAttachments
     },
-    attachments: attachments,
+    attachments: [
+      {
+        filename:"logo.png",
+        path:__dirname+"/public/views/logo.png",
+        cid:"logo"
+      },
+      ... fileAttachments
+      
+    ]
   };
-  console.log("depart de lenvoie");
+  console.log( mailer.context);
   /* Envoie du Mail */
   EXP.sendMail(mailer, (error, infos) => {
     if (error) {
@@ -82,6 +96,7 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
       return res.status(500);
      
     }
+    
     res.status(200).send("Mail envoyé à : " + mailer.to);
     alert(" DEVIS ENVOYE ")
   });
