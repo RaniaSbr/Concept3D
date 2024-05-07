@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    border: solid rgb(38, 38, 163)
+}
+
+h1{
+    color: red;
+}
+img{
+    
+}

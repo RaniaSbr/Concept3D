@@ -5,8 +5,9 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import icone from "../icone/papier.png";
+import Chargement from "./loading.js";
 
-function Contact_form() {
+function Devis() {
   const [Nom, setNom] = useState("");
   const [Prenom, setPrenom] = useState("");
   const [Mail, setMail] = useState("");
@@ -15,8 +16,13 @@ function Contact_form() {
   const [Materiel, setMateriel] = useState("");
   const [Msg, setMsg] = useState("PAS DE MENTION");
   const [Modal, setModal] = useState(false);
+  const [Loading, setLoading] = useState(false);
 
+  function loadingOn() {
+    setLoading(true);
+  }
   function modelOn() {
+    setLoading(false); /*Pour La page loading*/
     setModal(!Modal); /* Pour l'affichage du pop-up*/
   }
 
@@ -60,9 +66,10 @@ function Contact_form() {
     formData.append("Prenom", Prenom);
     formData.append("Mail", Mail);
     formData.append("Phone", Phone);
-
+    formData.append("Fichier", Fichier);
+    formData.append("Materiel", Materiel);
     formData.append("Msg", Msg);
-
+    loadingOn();
     try {
       console.log("je suis la");
       // Make a POST request using Axios
@@ -87,12 +94,17 @@ function Contact_form() {
   };
 
   return (
-    <div className="conteneur contact">
+    <div className="conteneur">
+      <img
+        src="./Assets/Wave2.png"
+        alt=""
+        className="fixed mt-[140px] top-0 z-0"
+      />
       <p className="p2">
         <br></br>
         Remplissez le formulaire ci-dessous pour nous contacter.
       </p>
-      <form className="formulaire contact-form" onSubmit={handleSubmit}>
+      <form className="formulaire " onSubmit={handleSubmit}>
         <div className="nom">
           <label htmlFor="nom">Nom :</label>
           <input
@@ -148,25 +160,32 @@ function Contact_form() {
           />
         </div>
 
-        <div className="msg">
-          {" "}
-          <label htmlFor="message">Message :</label>
-          <textarea
-            id="message"
-            name="Msg"
-            value={Msg}
-            onChange={handleMsgChange}
-            rows="4"
-          />
-        </div>
-        <div className="bouton">
-          <button type="submit" className="send">
-            Envoyer
-          </button>
+        <div className="grid gap-14 mb-8">
+          <div className="grid ">
+            {" "}
+            <label htmlFor="">Message :</label>
+            <textarea
+              id="message"
+              name="Msg"
+              value={Msg}
+              onChange={handleMsgChange}
+              rows="4"
+              className="bg-white  h-30  shadow-[inset_0_0px_6px_rgba(0,0,0,0.1)] rounded-3xl py-2 px-3 mb-5 "
+            />
+          </div>
+          <div className="bouton">
+            <button
+              type="submit"
+              className="px-20 py-2 font-regular  hover:text-[15.5px] hover:py-2.5 hover:shadow-xl duration-100 text-[15px] ease-in absolute text-white font-bold    rounded-3xl bg-bleu/80"
+            >
+              Envoyer
+            </button>
+          </div>
         </div>
       </form>
+      {Loading && <Chargement></Chargement>}
       {Modal && <Model></Model>}
     </div>
   );
 }
-export default Contact_form;
+export default Devis;

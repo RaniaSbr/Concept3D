@@ -17,7 +17,7 @@ function Footer(params) {
   };
 
   return (
-    <div className="footer">
+    <div className="footer relative">
       <div className="up-foot">
         <a href="/" className="logo logo-foot">
           <img className="logoC" src=".\Assets\Logo.png" alt="" />

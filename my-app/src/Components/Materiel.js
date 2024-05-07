@@ -189,8 +189,8 @@ const products = [
 
 export default function Materiel() {
   return (
-    <div className="grid  justify-items-center align-center p-10 w-screen">
-      <div className="grid gap-6 justify-items-center  align-center mb-10 w-screen">
+    <div className="grid justify-items-center align-center  w-screen">
+      <div className="md:grid  hidden gap-6 justify-items-center  align-center mb-10 w-screen">
         {" "}
         <div className="flex items-center gap-1 h-auto">
           {" "}
@@ -198,7 +198,7 @@ export default function Materiel() {
         </div>
         <div className="flex text-center  text-[20px] w-4/5 gap-0">
           {" "}
-          <p className="font-bold text-gray-700"> Concept3D</p>
+          <span className="font-bold text-gray-700"> Concept3D</span>
           <p className="font-normal text-gray-700/80">
             propose une large gamme de matériaux, comprenant des plastiques, des
             métaux, ainsi qu'une variété de finitions et de couleurs pour
@@ -206,17 +206,19 @@ export default function Materiel() {
           </p>
         </div>
       </div>
+      <hr className="w-[90vw] bg-black border hidden md:flex rounded-3xl hr-center" />
 
       {products.map((product) => (
-        <div key={product.id} className="grid py-5">
-          <hr className="w-[90vw] bg-black border rounded-3xl " />
-
-          <div className="flex items-center w-screen justify-start gap-6  ">
-            <div className="grid w-1/5 justify-items-center  align-start pt-10">
-              <img src={product.image} alt={product.name} className="h-40" />
-              <p className="text-center">{product.name}</p>
+        <div
+          key={product.id}
+          className="grid px-4   justify-items-center align-center"
+        >
+          <div className="grid md:flex   items-center w-screen md:justify-start justify-center gap-6 py-5 ">
+            <div className="grid md:w-1/5 justify-items-center align-center  md:align-start ">
+              {/* <img src={product.image} alt={product.name} className="h-40" /> */}
+              <p className="text-center pl-4 text-2xl">{product.name}</p>
             </div>
-            <div className="grid w-[65vw] gap-3  justify-items-start align-center">
+            <div className="grid w-[90vw] md:w-[65vw] gap-3  justify-items-start align-center">
               <div className="description">
                 <p className="text-lg font-bold">Description:</p>
                 <p className="font-light text-[16px]">{product.description}</p>
@@ -242,6 +244,7 @@ export default function Materiel() {
               </div>
             </div>
           </div>
+          <hr className="w-[90vw] bg-black border rounded-3xl " />
         </div>
       ))}
     </div>

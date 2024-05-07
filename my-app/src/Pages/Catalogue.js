@@ -7,7 +7,7 @@ function Catalogue(params) {
   return (
     <div className="catalogue">
       <Navbar></Navbar>
-      <div className="mt-28">
+      <div className="md:mt-28">
         <Materiel></Materiel>
       </div>
       <Footer></Footer>

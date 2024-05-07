@@ -4,7 +4,6 @@ import Model from "../Components/model";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
-import icone from "../icone/papier.png";
 import Chargement from "./loading.js";
 
 function Devis() {
@@ -185,7 +184,12 @@ function Devis() {
           {Fichier && (
             <div>
               <br></br>
-              <img width={60} height={60} src={icone} alt="Icône du fichier" />
+              <img
+                width={60}
+                height={60}
+                src="./Assets/papier.png"
+                alt="Icône du fichier"
+              />
               <p>{Fichier.name}</p>
             </div>
           )}

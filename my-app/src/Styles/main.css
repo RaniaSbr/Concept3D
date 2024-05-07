@@ -13,6 +13,33 @@
   --textColor: #e7e7de;
   --greyColor: #61677a;
 }
+.moving-image-container {
+  /* position: relative; Ensure container is positioned relatively */
+  height: 100px; /* Adjust height as needed */
+  width: 100px; /* Adjust width as needed */
+  display: flex;
+}
+.moving-image {
+  /* position: absolute; */
+  bottom: 0; /* Anchor the image at the bottom */
+  left: 50%; /* Position in the middle horizontally */
+  transform: translateX(-50%); /* Center the image horizontally */
+  animation: swing 0.8s ease-in-out infinite alternate; /* Adjust animation duration and timing function as needed */
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg); /* Start with no rotation */
+    transform-origin: top; /* Rotate around the top */
+  }
+  50% {
+    transform: rotate(5deg); /* Swing to the right */
+    transform-origin: top; /* Rotate around the top */
+  }
+  100% {
+    transform: rotate(-5deg); /* Swing to the left */
+    transform-origin: top; /* Rotate around the top */
+  }
+}
 .logoC {
   height: 40px;
 }
@@ -20,7 +47,7 @@ a {
   text-decoration: none;
 }
 .active {
-  color: var(--secondaryColor);
+  color: var(--mainColorLight);
 }
 .activee::after {
   background-color: red;
@@ -144,7 +171,7 @@ header {
   transition: opacity 0.2s ease-in-out;
 }
 nav a:hover {
-  color: var(--secondaryColor);
+  color: var(--mainColorLight);
 }
 header .nav-btn {
   padding: 5px;

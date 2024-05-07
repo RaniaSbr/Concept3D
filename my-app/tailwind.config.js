@@ -10,6 +10,7 @@ module.exports = {
         blanc: "#e7e7de",
         rose: "#f39189",
         gris: "#61677a",
+        whitie: "#f2f2f2",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
