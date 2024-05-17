@@ -73,7 +73,7 @@ function Devis() {
       console.log("je suis la");
       // Make a POST request using Axios
       const response = await axios.post(
-        "http://localhost:5000/mail",
+        "http://localhost:2000/mail",
         formData,
         {
           headers: {

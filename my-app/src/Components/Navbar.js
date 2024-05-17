@@ -4,7 +4,7 @@ import { Twirl as Hamburger } from "hamburger-react";
 
 function Navbar() {
   const navRef = useRef();
-  const [activeSection, setActiveSection] = useState("null");
+  const [activeSection, setActiveSection] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,18 +21,19 @@ function Navbar() {
     catalogue: useRef(null),
     contact: useRef(null),
   };
-
   useEffect(() => {
     const handleScroll = () => {
-      const scrollOffset = window.scrollY + navRef.current.offsetHeight;
+      if (navRef.current) {
+        const scrollOffset = window.scrollY + navRef.current.offsetHeight;
 
-      for (const sectionKey in sectionsRef) {
-        const section = sectionsRef[sectionKey].current;
-        if (section) {
-          const position = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollOffset >= position && scrollOffset < position + height) {
-            setActiveSection(sectionKey);
+        for (const sectionKey in sectionsRef) {
+          const section = sectionsRef[sectionKey].current;
+          if (section) {
+            const position = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollOffset >= position && scrollOffset < position + height) {
+              setActiveSection(sectionKey);
+            }
           }
         }
       }

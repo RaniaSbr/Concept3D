@@ -3,16 +3,18 @@ const app = express();
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const path = require("path");
-const hb= require("nodemailer-express-handlebars");
+const hb = require("nodemailer-express-handlebars");
 const { Stats } = require("fs");
 app.use(express.json());
 
-
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); 
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
 
   // Passez à l'étape suivante
   next();
@@ -31,8 +33,8 @@ const EXP = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "mohamedamine.tifoun2003@gmail.com",
-    pass: "npxxdsfdqemqwskn",
+    user: "lr_sisaber@esi.dz",
+    pass: "thqqyaizzcjvxodt",
   },
 });
 /****** TEMPLATE CONFIG */
@@ -46,8 +48,7 @@ const config = {
   extName: ".handlebars",
 };
 
-
-EXP.use('compile' , hb(config));
+EXP.use("compile", hb(config));
 /* ENVOIE DU MAIL */
 
 app.post("/mail", upload.array("Fichier"), (req, res) => {
@@ -62,48 +63,49 @@ app.post("/mail", upload.array("Fichier"), (req, res) => {
     contentType: file.mimetype,
   }));
   const mailer = {
-    from: "mohamedamine.tifoun2003@gmail.com",
-    to: "lm_sisaber@esi.dz",
+    from: "lr_sisaber@esi.dz",
+    to: "lr_sisaber@esi.dz",
     subject: "Avis de devis",
-    template:'index',
-    context:{
-      Titre:"Avis de Devis",
-      Date:new Date().toLocaleDateString(),
-      Heure : new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'}),
-      Nom:`${req.body.Nom.toUpperCase()}`,
-      Prenom:`${req.body.Prenom.toUpperCase()}`,
-      EMAIL : `${req.body.Mail}`,
-      TELEPHONE:`${req.body.Phone}`,
-      Materiel:`${req.body.Materiel}`,
-      Mention:`${req.body.Msg}`,
-      attachments: fileAttachments
+    template: "index",
+    context: {
+      Titre: "Avis de Devis",
+      Date: new Date().toLocaleDateString(),
+      Heure: new Date().toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      Nom: `${req.body.Nome.toUpperCase()}`,
+      Prenom: `${req.body.Prenom.toUpperCase()}`,
+      EMAIL: `${req.body.Mail}`,
+      TELEPHONE: `${req.body.Phone}`,
+      Materiel: `${req.body.Materiel}`,
+      Mention: `${req.body.Msg}`,
+      attachments: fileAttachments,
     },
     attachments: [
       {
-        filename:"logo.png",
-        path:__dirname+"/public/views/logo.png",
-        cid:"logo"
+        filename: "logo.png",
+        path: __dirname + "/public/views/logo.png",
+        cid: "logo",
       },
-      ... fileAttachments
-      
-    ]
+      ...fileAttachments,
+    ],
   };
-  console.log( mailer.context);
+  console.log(mailer.context);
   /* Envoie du Mail */
   EXP.sendMail(mailer, (error, infos) => {
     if (error) {
       console.log(error);
       return res.status(500);
-     
     }
-    
+
     res.status(200).send("Mail envoyé à : " + mailer.to);
-    alert(" DEVIS ENVOYE ")
+    alert(" DEVIS ENVOYE ");
   });
 });
 
 /*  SERVER ACTIVATION */
-app.listen(5000, (req, res) => {
+app.listen(2000, (req, res) => {
   console.log("Connecté au port 5000");
 });
 /***************************/

@@ -4,7 +4,6 @@ import Model from "../Components/model";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
-import icone from "../icone/papier.png";
 import Chargement from "./loading.js";
 
 function Devis() {
@@ -74,7 +73,7 @@ function Devis() {
       console.log("je suis la");
       // Make a POST request using Axios
       const response = await axios.post(
-        "http://localhost:5000/mail",
+        "http://localhost:2000/mail",
         formData,
         {
           headers: {
