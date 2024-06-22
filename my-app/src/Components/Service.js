@@ -5,13 +5,13 @@ import "../Styles/main.css"; // Import CSS file for styling
 function Service({ title, text, imageUrl }) {
   return (
     <div className="">
-      <div className="grid grid-cols-2 justify-items-center  content-center  w-[50vw]">
-        <div className="moving-image-container gap-3 flex ">
+      <div className="flex  items-center gap-5 justify-center ">
+        <div className="moving-image-container   flex items-start gap-0 justify-center">
           <img src={imageUrl} alt="" className="moving-image h-14" />
-          <div className="grid">
-            <p>{title}</p>
-            <p className=" font-light text-sm w-[20vw]">{text}</p>
-          </div>
+        </div>
+        <div className="grid w-1/2">
+          <p>{title}</p>
+          <p className=" font-light text-sm ">{text}</p>
         </div>
       </div>
     </div>

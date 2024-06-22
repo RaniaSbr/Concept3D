@@ -21,6 +21,7 @@ function Navbar() {
     catalogue: useRef(null),
     contact: useRef(null),
   };
+
   useEffect(() => {
     const handleScroll = () => {
       if (navRef.current) {
@@ -46,9 +47,9 @@ function Navbar() {
   }, [sectionsRef]);
 
   return (
-    <header className="h-30 flex items-center justify-between font-medium bg-white shadow-md">
+    <header className="h-30 flex items-center justify-between relative font-medium bg-white shadow-md">
       <a href="/" className="flex items-center">
-        <img className="logoC" src="./Assets/Logo.png" alt="" />
+        <img className="logoC" src="./Assets/Logo.png" alt="Logo" />
         <div className="oncept3d mb-2">
           <p className="oncept">oncept</p>
           <a href="/">
@@ -56,7 +57,7 @@ function Navbar() {
           </a>
         </div>
       </a>
-      <nav className="hidden md:flex">
+      <nav className="hidden md:flex flex-1 justify-center">
         <ul className="flex gap-5">
           {sections.map((section) => (
             <li key={section.id}>
@@ -72,19 +73,10 @@ function Navbar() {
           ))}
         </ul>
       </nav>
-      <div className="md:hidden">
-        <Hamburger
-          toggled={isOpen}
-          toggle={setOpen}
-          onToggle={(toggled) => {
-            setIsMenuOpen(toggled);
-          }}
-          color="grey"
-        />
-      </div>
+
       {isOpen && isMenuOpen && (
-        <div className="fixed top-0 right-0 w-screen h-screen bg-white/80">
-          <ul className="grid mt-[334px] gap-5 font-bold h-3/4 w-[100] justify-items-center rounded-b-3xl content-center bg-white/80 shadow-xl backdrop-blur-md">
+        <div className="fixed top-0 right-0 md:hidden w-screen h-screen bg-white/80 z-50">
+          <ul className="grid mt-20 gap-5 font-bold h-3/4 w-full justify-items-center rounded-b-3xl content-center bg-white/80 shadow-xl backdrop-blur-md">
             {sections.map((section) => (
               <li key={section.id}>
                 <NavLink
@@ -103,9 +95,19 @@ function Navbar() {
           </ul>
         </div>
       )}
-      <NavLink to="/Devis" className="devis-btn">
+      <NavLink to="/Devis" className="devis-btn hidden md:block">
         {"Obtenir un devis "}
       </NavLink>
+      <div className="md:hidden" style={{ zIndex: 1000 }}>
+        <Hamburger
+          toggled={isOpen}
+          toggle={setOpen}
+          onToggle={(toggled) => {
+            setIsMenuOpen(toggled);
+          }}
+          color="grey"
+        />
+      </div>
     </header>
   );
 }

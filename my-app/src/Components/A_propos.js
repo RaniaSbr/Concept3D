@@ -7,7 +7,7 @@ function Propos(props) {
         style={{ backgroundColor: couleur }}
         className="ml-8 py-2 px-8 w-fit rounded-bl-2xl rounded-br-2xl"
       >
-        <p> {texte}</p>
+        <p className=""> {texte}</p>
       </div>
     </div>
   );
